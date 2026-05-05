@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-red: #e62020;
+  --color-brand-black: #0a0a0a;
+  --color-brand-charcoal: #1a1a1a;
+  --color-brand-light: #f8f9fa;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@keyframes area-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer utilities {
+  .bg-carbon {
+    background-color: var(--color-brand-black);
+    background-image: radial-gradient(var(--color-brand-charcoal) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .animate-area-marquee {
+    display: flex;
+    width: max-content;
+    animation: area-marquee 50s linear infinite;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-area-marquee .marquee-half--duplicate {
+      display: none;
+    }
+
+    .animate-area-marquee {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 100%;
+      width: auto !important;
+      padding-inline: 1rem;
+    }
+  }
+}
+
+/* Gold glistening shimmer on Powered by Tech ePhi (same as MailXTract) */
+.emblem-glisten {
+  position: relative;
+  overflow: hidden;
+}
+
+.emblem-glisten::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 220, 100, 0.4) 45%,
+    rgba(255, 235, 150, 0.55) 50%,
+    rgba(255, 220, 100, 0.4) 55%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: emblem-shine 10s ease-in-out infinite;
+  pointer-events: none;
+  mask-image: radial-gradient(circle, black 0%, black 48%, transparent 50%);
+  -webkit-mask-image: radial-gradient(circle, black 0%, black 48%, transparent 50%);
+}
+
+@keyframes emblem-shine {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .emblem-glisten::after {
+    animation: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgb(230 32 32 / 0.12);
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-brand-black);
+  color: var(--color-brand-light);
+  overscroll-behavior-x: none;
+}

@@ -33,8 +33,8 @@ export function Footer() {
         >
           <img
             src={poweredByTechephiImg}
-            alt=""
-            className="block h-[6.487rem] w-auto object-contain sm:h-[7.207rem]"
+            alt="Powered by Techephi"
+            className="block h-[7.26rem] w-auto object-contain"
             draggable={false}
           />
         </a>
